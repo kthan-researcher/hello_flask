@@ -21,6 +21,7 @@ def rp():
     q = request.args.getlist('q')
     return 'q=%s' % str(q)
 
+
 @app.route('/test_wsgi')
 def wsgi_test():
     def application(environ, start_respones):
@@ -33,6 +34,7 @@ def wsgi_test():
         return [body]
     return make_response(application)
 
+
 @app.route('/res_1')
 def res_1():
     custom_res = Response('Custom Respones', 200, {'test': 'ttt'})
@@ -43,9 +45,11 @@ def res_1():
 #     print('before request!')
 #     g.str = '한글'
 
+
 @app.route('/gg')
 def helloworld2():
     return 'hello world.' + getattr(g, 'str', '111')
+
 
 @app.route('/')
 def helloworld():
